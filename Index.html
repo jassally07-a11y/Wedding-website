@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aqila &amp; [Partner] — Wedding</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fff9f6;
+      --accent:#8b5e5e;
+      --muted:#6b6b6b;
+      --card:#ffffff;
+      --shadow: 0 6px 24px rgba(24,24,24,0.08);
+      --radius:14px;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(ellipse at top left, rgba(255,245,242,0.9), transparent 30%),
+                  linear-gradient(180deg, #fffaf8 0%, var(--bg) 100%);
+      color:#2b2b2b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding-bottom:60px;
+    }
+
+    /* Container */
+    .wrap{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:28px;
+    }
+
+    /* Header / Hero */
+    header.hero{
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="400" viewBox="0 0 1400 400"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%23ffeef0"/><stop offset="1" stop-color="%23fff"/></linearGradient></defs><rect fill="url(%23g)" width="1400" height="400"/></svg>') center/cover no-repeat;
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      margin-bottom:28px;
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+
+    /* Floral accent (SVG) */
+    .floral {
+      width:220px;
+      height:220px;
+      flex:0 0 220px;
+      filter: drop-shadow(0 8px 20px rgba(139,94,94,0.12));
+    }
+    .hero-content{
+      padding:12px 8px;
+      flex:1;
+    }
+    .names{
+      font-family: "Playfair Display", serif;
+      font-size:36px;
+      color:var(--accent);
+      margin:0 0 6px 0;
+      letter-spacing:0.6px;
+    }
+    .date{
+      font-weight:600;
+      color:var(--muted);
+      margin:0 0 12px 0;
+    }
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(139,94,94,0.16);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--accent);
+      border:2px solid rgba(139,94,94,0.12);
+      box-shadow:none;
+    }
+
+    /* Sections */
+    section{
+      background:var(--card);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+    }
+    h2{
+      font-family: "Playfair Display", serif;
+      margin:0 0 8px 0;
+      color:var(--accent);
+      font-size:22px;
+    }
+    p.lead{margin:0 0 12px 0;color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+      header.hero{flex-direction:column;align-items:flex-start}
+      .floral{width:160px;height:160px;flex:0 0 160px}
+      .names{font-size:30px}
+    }
+
+    /* Event card */
+    .event{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .event .time{
+      font-weight:700;
+      color:var(--accent);
+      min-width:110px;
+      font-size:15px;
+    }
+    .event .desc{color:var(--muted)}
+
+    /* RSVP form */
+    form.rsvp{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .rsvp input,.rsvp textarea, .rsvp select{
+      flex:1 1 220px;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid #eee;
+      font-size:14px;
+    }
+    .rsvp .full{flex-basis:100%}
+    .note{font-size:13px;color:var(--muted);margin-top:8px}
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:8px;
+    }
+    .gallery img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:8px;
+      display:block;
+    }
+    @media (max-width:860px){ .gallery{grid-template-columns:repeat(2,1fr)} }
+
+    /* Footer */
+    footer{ text-align:center; color:var(--muted); font-size:13px; margin-top:10px }
+
+    /* small helpers */
+    .muted{color:var(--muted);font-size:14px}
+    .small{font-size:13px;color:var(--muted)}
+    a.inline{color:var(--accent); text-decoration:none; font-weight:600}
+
+    /* modal */
+    .modal{
+      position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(18,18,18,0.35);
+      opacity:0; pointer-events:none; transition:opacity .18s ease;
+    }
+    .modal.show{opacity:1; pointer-events:auto}
+    .modal .panel{
+      background:white; padding:18px; border-radius:12px; max-width:480px; width:92%;
+      box-shadow:0 12px 48px rgba(2,6,23,0.2);
+    }
+    .close{
+      background:transparent;border:0;color:var(--muted);font-weight:600;cursor:pointer;
+    }
+
+    /* small responsive adjustments */
+    @media (max-width:540px){
+      .names{font-size:26px}
+      .floral{display:none}
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero" role="banner" aria-label="Wedding hero">
+      <!-- floral SVG -->
+      <svg class="floral" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#f8d7da"/>
+            <stop offset="1" stop-color="#fff"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(20,10)">
+          <circle cx="170" cy="120" r="96" fill="url(#g1)" />
+          <path d="M56 80c24-28 72-38 106-18 36 21 58 66 34 92-24 26-72 22-106 2-34-20-58-58-34-76z" fill="#f9e6e7" opacity=".95"/>
+          <g transform="translate(100,80) scale(.9)">
+            <path d="M15 20c6-12 22-20 36-14 14 6 20 24 14 36-6 12-24 18-36 12-12-6-22-26-14-34z" fill="#e8b6b6"/>
+            <circle cx="38" cy="30" r="6" fill="#fff"/>
+          </g>
+        </g>
+      </svg>
+
+      <div class="hero-content">
+        <h1 class="names">Aqila &amp; [Partner]</h1>
+        <div class="date">Saturday, 12 April 2026 — 10:00 AM</div>
+        <p class="lead">You are warmly invited to celebrate with us. Ceremony followed by reception and dinner. Venue: [Insert venue name & address]</p>
+
+        <div class="cta-row" role="navigation" aria-label="Quick links">
+          <a class="btn" href="#rsvp" title="RSVP now">RSVP</a>
+          <a class="btn secondary" href="#details" title="See details">Event Details</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Our Story -->
+    <section id="story" aria-labelledby="story-heading">
+      <h2 id="story-heading">Our Story</h2>
+      <p class="lead">A short, sweet paragraph about how you met, your proposal, and what this day means. Replace this text with your own story — keep it 2–4 sentences for best readability.</p>
+      <div class="grid" aria-hidden="false">
+        <div>
+          <strong class="small">How we met</strong>
+          <p class="muted">A short sentence about how you two met. (e.g., "We met at university in 2016 and have been inseparable since.")</p>
+        </div>
+        <div>
+          <strong class="small">The proposal</strong>
+          <p class="muted">One sentence about the proposal. (e.g., "A quiet hike and a surprise picnic — she said yes!")</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Details -->
+    <section id="details" aria-labelledby="details-heading">
+      <h2 id="details-heading">Event Details</h2>
+      <p class="lead">Schedule and locations for the day.</p>
+
+      <div class="event" role="article" aria-label="Ceremony">
+        <div class="time">10:00 AM</div>
+        <div>
+          <strong>Ceremony</strong>
+          <div class="desc">[Venue name], [address line]. Guests are asked to arrive 15 minutes early.</div>
+        </div>
+      </div>
+
+      <div style="height:10px"></div>
+
+      <div class="event" role="article" aria-label="Reception">
+        <div class="time">11:30 AM</div>
+        <div>
+          <strong>Reception & Lunch</strong>
+          <div class="desc">Join us for food and celebration in the main hall. Dress code: Smart casual / semi-formal.</div>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px">
+        Need directions? Add a Google Maps link to the venue by replacing [Insert Google Maps link] with the venue link: <a class="inline" href="[Insert Google Maps link]" target="_blank" rel="noopener">Open map</a>.
+      </p>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" aria-labelledby="rsvp-heading">
+      <h2 id="rsvp-heading">RSVP</h2>
+      <p class="lead">Please let us know if you can join. The form below creates an email you can send, and it also saves locally in your browser so you can review entries.</p>
+
+      <form class="rsvp" onsubmit="handleRsvp(event)" id="rsvpForm" novalidate>
+        <input type="text" id="name" name="name" placeholder="Full name" required aria-label="Full name">
+        <select id="attending" name="attending" required aria-label="Will you attend?">
+          <option value="">Will you attend?</option>
+          <option value="Yes">Yes, I will attend</option>
+          <option value="No">Sorry, I can't make it</option>
+          <option value="Maybe">Maybe</option>
+        </select>
+        <input type="number" id="guests" name="guests" min="0" placeholder="Number of guests" aria-label="Number of guests">
+        <input type="text" id="diet" name="diet" placeholder="Dietary requirements (optional)" aria-label="Dietary requirements">
+        <textarea id="message" class="full" name="message" rows="3" placeholder="Message to the couple (optional)"></textarea>
+
+        <div style="display:flex;gap:8px;flex-basis:100%">
+          <button class="btn" type="submit">Send RSVP</button>
+          <button class="btn secondary" type="button" onclick="saveDraft()">Save draft</button>
+        </div>
+
+        <p class="note">If the form doesn't send, you can email us at <a class="inline" href="mailto:youremail@example.com">youremail@example.com</a>. Replace that address in the code. RSVP responses are also stored locally in your browser until you clear them.</p>
+      </form>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading">Gallery</h2>
+      <p class="lead">A few favorite photos (replace placeholders with your own).</p>
+
+      <div class="gallery" role="list">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Gallery placeholder 1" role="listitem">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Gallery placeholder 2" role="listitem">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Gallery placeholder 3" role="listitem">
+        <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Gallery placeholder 4" role="listitem">
+        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Gallery placeholder 5" role="listitem">
+        <img src="https://images.unsplash.com/photo-1505577058444-a3dabf3b1bf8?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Gallery placeholder 6" role="listitem">
+      </div>
+    </section>
+
+    <!-- Registry & Travel -->
+    <section id="more" aria-labelledby="more-heading">
+      <h2 id="more-heading">Gifts & Travel</h2>
+      <p class="lead">Registry, accommodation suggestions and travel tips.</p>
+
+      <div class="grid">
+        <div>
+          <strong class="small">Registry</strong>
+          <p class="muted">If you'd like to give a gift, please visit our registry at: <a class="inline" href="#">[Registry link]</a> or contribute to our honeymoon fund: <a class="inline" href="#">[Honeymoon link]</a></p>
+        </div>
+        <div>
+          <strong class="small">Where to stay</strong>
+          <p class="muted">Hotels near the venue + transport tips. Add links and short descriptions here for guests travelling from out of town.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="lead">Questions? Reach out to us.</p>
+      <p class="muted">Email: <a class="inline" href="mailto:youremail@example.com">youremail@example.com</a> — Phone/WhatsApp: +60 [phone number]</p>
+    </section>
+
+    <footer>
+      Made with ♥ and florals • Please replace placeholders (dates, venue, email, partner name) before publishing.
+    </footer>
+
+  </div>
+
+  <!-- RSVP modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="panel" role="document">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>RSVP created</strong>
+        <button class="close" aria-label="Close" onclick="closeModal()">Close ✕</button>
+      </div>
+      <p class="muted" id="modal-text" style="margin-top:10px">We've prepared your RSVP email — click the button below to open your email client and send it, or copy the message to paste elsewhere.</p>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" id="open-mail">Open email app</button>
+        <button class="btn secondary" id="copy-text">Copy RSVP text</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple RSVP handling: builds a mailto: and saves local copy
+    function handleRsvp(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const attending = document.getElementById('attending').value;
+      const guests = document.getElementById('guests').value || '0';
+      const diet = document.getElementById('diet').value.trim() || 'None';
+      const message = document.getElementById('message').value.trim() || '';
+
+      if(!name || !attending){
+        alert('Please provide your name and whether you will attend.');
+        return;
+      }
+
+      const email = 'youremail@example.com'; // <-- Replace with your RSVP email
+      const subject = encodeURIComponent('RSVP: ' + name + ' — Aqila & Partner');
+      const bodyText = [
+        'Name: ' + name,
+        'Attending: ' + attending,
+        'Number of guests: ' + guests,
+        'Dietary requirements: ' + diet,
+        'Message: ' + message,
+        '',
+        'Sent from the wedding RSVP form.'
+      ].join('\\n');
+
+      // Save local copy
+      const saved = JSON.parse(localStorage.getItem('rsvp_list') || '[]');
+      saved.push({name, attending, guests, diet, message, timestamp: new Date().toISOString()});
+      localStorage.setItem('rsvp_list', JSON.stringify(saved));
+
+      // Prepare modal actions
+      const mailto = 'mailto:' + encodeURIComponent(email) + '?subject=' + subject + '&body=' + encodeURIComponent(bodyText);
+      showModal(mailto, bodyText);
+    }
+
+    function saveDraft(){
+      const name = document.getElementById('name').value.trim();
+      const attending = document.getElementById('attending').value;
+      const guests = document.getElementById('guests').value || '0';
+      const diet = document.getElementById('diet').value.trim() || 'None';
+      const message = document.getElementById('message').value.trim() || '';
+
+      const drafts = JSON.parse(localStorage.getItem('rsvp_drafts') || '[]');
+      drafts.push({name, attending, guests, diet, message, timestamp:new Date().toISOString()});
+      localStorage.setItem('rsvp_drafts', JSON.stringify(drafts));
+      alert('Draft saved in your browser (local storage).');
+    }
+
+    function showModal(mailtoUrl, bodyText){
+      const modal = document.getElementById('modal');
+      const openBtn = document.getElementById('open-mail');
+      const copyBtn = document.getElementById('copy-text');
+      const modalText = document.getElementById('modal-text');
+
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+
+      openBtn.onclick = ()=> { window.location.href = mailtoUrl; };
+      copyBtn.onclick = ()=> {
+        navigator.clipboard.writeText(bodyText).then(()=> {
+          alert('RSVP message copied to clipboard. Paste into email or messaging app.');
+        }).catch(()=> alert('Copy failed — please copy manually.'));
+      };
+    }
+    function closeModal(){
+      const modal = document.getElementById('modal');
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    // Small enhancement: prefill name from previous draft if found
+    (function prefill(){
+      try{
+        const drafts = JSON.parse(localStorage.getItem('rsvp_drafts') || '[]');
+        if(drafts.length){
+          const last = drafts[drafts.length-1];
+          if(last.name) document.getElementById('name').value = last.name;
+          if(last.attending) document.getElementById('attending').value = last.attending;
+        }
+      }catch(e){}
+    })();
+
+    // Accessibility: close modal on Escape
+    document.addEventListener('keydown', (e)=> {
+      if(e.key === 'Escape') closeModal();
+    });
+
+  </script>
+</body>
+</html>
